@@ -4093,33 +4093,24 @@ Select Bot Settings:
 ├ *Day* : ${locale_day}
 ├ *Time* : ${date_time}
 ╰──────❍`
-				await m.reply({
-    image: { url: 'https://n.uguu.se/bvcyancd.jpg' },
-    caption: menunya,
-    contextInfo: {
-        mentionedJid: [m.sender, '0@s.whatsapp.net', ownerNumber[0] + '@s.whatsapp.net'],
-        forwardingScore: 10,
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: {
-            newsletterJid: my.ch,
-            serverMessageId: null,
-            newsletterName: 'Join For More Info'
-        },
-        externalAdReply: {
-            title: author,
-            body: packname,
-            showAdAttribution: false,
-            thumbnailUrl: 'https://n.uguu.se/bvcyancd.jpg',
-            mediaType: 1,
-            previewType: 0,
-            renderLargerThumbnail: true,
-            mediaUrl: my.gh,
-            sourceUrl: my.gh,
-            }
-         }
-     })
- })
-}
+				await naze.sendMessageV3(m.chat, {
+					text: menunya,
+					title: ucapanWaktu,
+					description: packname,
+					thumbnailUrl: profile,
+					sourceUrl: my.gh,
+					mentions: [m.sender, '0@s.whatsapp.net', ownerNumber[0] + '@s.whatsapp.net'],
+					contextInfo: {
+						forwardingScore: 1,
+						isForwarded: true,
+						forwardedNewsletterMessageInfo: {
+							newsletterJid: my.ch,
+							serverMessageId: null,
+							newsletterName: 'Join For More Info'
+						}
+					}
+				})
+			}
 			break
 			case 'allmenu': {
 				let profile
