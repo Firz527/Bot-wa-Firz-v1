@@ -4120,7 +4120,6 @@ Select Bot Settings:
      })
   }	
 }
-			break
 			case 'allmenu': {
 				let profile
 				try {
