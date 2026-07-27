@@ -4115,33 +4115,11 @@ Select Bot Settings:
             renderLargerThumbnail: true,
             mediaUrl: my.gh,
             sourceUrl: my.gh,
-        }
-    }
-})
-	  			 caption: menunya,
-					contextInfo: {
-						mentionedJid: [m.sender, '0@s.whatsapp.net', ownerNumber[0] + '@s.whatsapp.net'],
-						forwardingScore: 10,
-						isForwarded: true,
-						forwardedNewsletterMessageInfo: {
-							newsletterJid: my.ch,
-							serverMessageId: null,
-							newsletterName: 'Join For More Info'
-						},
-						externalAdReply: {
-							title: author,
-							body: packname,
-							showAdAttribution: false,
-							thumbnailUrl: profile,
-							mediaType: 1,
-							previewType: 0,
-							renderLargerThumbnail: true,
-							mediaUrl: my.gh,
-							sourceUrl: my.gh,
-						}
-					}
-				})
-			}
+            }
+         }
+     })
+ })
+}
 			break
 			case 'allmenu': {
 				let profile
