@@ -4118,7 +4118,7 @@ Select Bot Settings:
            }
         }
      })
-  })	
+  }	
 }
 			break
 			case 'allmenu': {
