@@ -4302,13 +4302,58 @@ Select Bot Settings:
 			
 			// Menu
 			case 'menu': {
-				if (args[0] == 'set') {
-					if (!isCreator) return m.reply(mess.owner)
-					if (['1','2','3'].includes(args[1])) {
-						set.template = parseInt(Number(args[1]))
-						m.reply('Sukses Mengubah Template Menu')
-					} else m.reply(`Template Menu:\n- 1 (Button Menu)\n- 2 (List Menu)\n- 3 (Document Menu)\n\nExample: ${prefix + command} set 1`)
-				} else await templateMenu(naze, set.template, m, prefix, setv, db, { locale_day, date, date_time, botNumber, author, packname, isVip, isPremium, ucapanWaktu })
+				let profile
+				try {
+					profile = await naze.profilePictureUrl(m.sender, 'image');
+				} catch (e) {
+					profile = fake.anonim
+				}
+				const menunya = `
+╭──❍「 *USER INFO* 」❍
+├ *Nama* : ${m.pushName ? m.pushName : 'Tanpa Nama'}
+├ *Id* : @${m.sender.split('@')[0]}
+├ *User* : ${isVip ? 'VIP' : isPremium ? 'PREMIUM' : 'FREE'}
+├ *Limit* : ${isVip ? 'VIP' : db.users[m.sender].limit }
+├ *Money* : ${db.users[m.sender] ? db.users[m.sender].money.toLocaleString('id-ID') : '0'}
+╰─┬────❍
+╭─┴─❍「 *MENU BOT* 」❍
+├ .botmenu
+├ .gamemenu
+├ .toolsmenu
+├ .searchmenu
+├ .downloadmenu
+├ .quotesmenu
+├ .stalkermenu
+├ .funmenu
+├ .animemenu
+├ .ownermenu
+├ .allmenu
+├ .groupmenu
+├ .randommenu
+├ .aimenu
+╰─┬────❍
+╭─┴─❍「 *ABOUT* 」❍
+├ *Date* : ${date}
+├ *Day* : ${locale_day}
+├ *Time* : ${date_time}
+╰──────❍`
+				await naze.sendMessageV3(m.chat, {
+					text: menunya,
+					title: ucapanWaktu,
+					description: packname,
+					thumbnailUrl: profile,
+					sourceUrl: my.gh,
+					mentions: [m.sender, '0@s.whatsapp.net', ownerNumber[0] + '@s.whatsapp.net'],
+					contextInfo: {
+						forwardingScore: 1,
+						isForwarded: true,
+						forwardedNewsletterMessageInfo: {
+							newsletterJid: my.ch,
+							serverMessageId: null,
+							newsletterName: 'Join For More Info'
+						}
+					}
+				})
 			}
 			break
 			case 'allmenu': {
